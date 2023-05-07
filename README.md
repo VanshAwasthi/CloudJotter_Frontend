@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+The "CloudJotter" project aims to revolutionize traditional note-taking practices by leveraging the power of cloud technology. With its seamless synchronization, multi-platform accessibility, and advanced features, this project provides users with a flexible and reliable solution to capture and organize their thoughts, ideas, and information while ensuring their data remains secure and easily accessible at all times. This is the frontend part of the project.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
