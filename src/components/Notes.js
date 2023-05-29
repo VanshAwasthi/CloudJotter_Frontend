@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AddNote from "./AddNote";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes} = context; //ye mene destructuring kardiya notes,setNotes naam ke variable mei context mei jo notes hai vo ajaegye
+  const { notes,getNotes} = context; //ye mene destructuring kardiya notes,setNotes naam ke variable mei context mei jo notes hai vo ajaegye
+  useEffect(() => {
+    getNotes()
+  }, [])
+  
   return (
     <>
     <AddNote/>
