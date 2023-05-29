@@ -47,8 +47,18 @@ const NoteState = (props) => {
   };
 
   //Delete a note
-  const deleteNote = (id) => {
+  const deleteNote =async (id) => {
     //ToDo API call
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ1Y2QxYmYyNzcwMzRjMzg1OWY2YThlIn0sImlhdCI6MTY4MzgyODA0M30.uvFGSjMYVwOWiSXootxvzKHLwzJqc2nz_CJwJ33vDGI",
+      }
+    });
+    const json = response.json();
+    console.log(json);
+
     console.log("Deleting Note with " + id);
     const newNotes = notes.filter((note) => {
       return note._id !== id;
@@ -63,7 +73,7 @@ const NoteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ1Y2QxYmYyNzcwMzRjMzg1OWY2YThlIn0sImlhdCI6MTY4MzgyODA0M30.uvFGSjMYVwOWiSXootxvzKHLwzJqc2nz_CJwJ33vDGI",
       },
       body: JSON.stringify({title,description,tag}),
     });
