@@ -5,11 +5,12 @@ const AddNote = () => {
   const context = useContext(noteContext);
   const { addNote } = context; //ye mene destructuring kardiya notes,setNotes naam ke variable mei context mei jo notes hai vo ajaegye
   
-  const [note, setNote] = useState({title:"",description:"",tag:"default"})
+  const [note, setNote] = useState({title:"",description:"",tag:""})
 
   const handleClick = (e) => {
     e.preventDefault();//loading again
     addNote(note.title,note.description,note.tag);
+    setNote({title:"",description:"",tag:""})
   };
 
   const onChange = (e) => {
@@ -29,8 +30,10 @@ const AddNote = () => {
             className="form-control"
             id="title"
             name="title"
+            value={note.title}
             aria-describedby="emailHelp"
             onChange={onChange}
+            minLength={5} required
           />
         </div>
         <div className="mb-3">
@@ -42,7 +45,9 @@ const AddNote = () => {
             className="form-control"
             id="description"
             name="description"
+            value={note.description}
             onChange={onChange}
+            minLength={5} required
           />
         </div>
         <div className="mb-3">
@@ -54,10 +59,12 @@ const AddNote = () => {
             className="form-control"
             id="tag"
             name="tag"
+            value={note.tag}
             onChange={onChange}
+            minLength={5} required
           />
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleClick}>
+        <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleClick}>
           Add Note
         </button>
       </form>

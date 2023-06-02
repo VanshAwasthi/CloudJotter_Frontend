@@ -17,7 +17,7 @@ const NoteState = (props) => {
       }
     });//kyo ki ye parsed karegyi json ko
     const json = await response.json()//aur ye ek asynchronous function hai
-    console.log(json)
+
     setNotes(json)//mere saare notes set hojaegye aur visible hojaegye
   };
 
@@ -33,19 +33,7 @@ const NoteState = (props) => {
       body: JSON.stringify({title,description,tag}),
     });
 
-    const json = await response.json();
-    console.log(json);
-   
-    console.log("Adding a new Note");
-    const note = {
-      _id: "645e15c517a75e85386e73848",
-      user: "645cd1bf277034c3859f6a8e4",
-      title: title,
-      description: description,
-      tag: tag,
-      date: "2023-05-12T10:32:37.074Z",
-      __v: 0,
-    };
+    const note = await response.json();
     setNotes(notes.concat(note));
   };
 
@@ -60,9 +48,7 @@ const NoteState = (props) => {
       }
     });
     const json = response.json();
-    console.log(json);
 
-    console.log("Deleting Note with " + id);
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });
@@ -81,7 +67,6 @@ const NoteState = (props) => {
       body: JSON.stringify({title,description,tag}),
     });
     const json = await response.json();
-    console.log(json);
 
     let newNotes = JSON.parse(JSON.stringify(notes))//to create a deep copy
     //Logic to edit in Client
